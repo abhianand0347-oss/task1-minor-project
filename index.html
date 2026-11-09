@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app">
+        <aside class="sidebar">
+            <h2>TaskFlow</h2>
+            <p class="tagline">Organize your day</p>
+
+            <nav>
+                <a href="#dashboard" class="active">Dashboard</a>
+                <a href="#tasks">My Tasks</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p>Stay focused.</p>
+                <p>One task at a time.</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="welcome">WELCOME BACK</p>
+                    <h1>My Dashboard</h1>
+                </div>
+                <span class="date" id="todayDate"></span>
+            </header>
+
+            <section id="dashboard" class="stats">
+                <div class="stat-card">
+                    <p>Total Tasks</p>
+                    <h2 id="totalTasks">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Pending</p>
+                    <h2 id="pendingTasks">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Completed</p>
+                    <h2 id="completedTasks">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Overdue</p>
+                    <h2 id="overdueTasks">0</h2>
+                </div>
+            </section>
+
+            <section class="task-form-section">
+                <h2 id="formHeading">Create a New Task</h2>
+
+                <form id="taskForm">
+                    <input
+                        type="text"
+                        id="taskTitle"
+                        placeholder="Task title"
+                        maxlength="100"
+                        required
+                    >
+
+                    <textarea
+                        id="taskDescription"
+                        placeholder="Description (optional)"
+                        rows="3"
+                    ></textarea>
+
+                    <div class="form-row">
+                        <div>
+                            <label for="taskPriority">Priority</label>
+                            <select id="taskPriority">
+                                <option value="Low">Low</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="taskDueDate">Due Date</label>
+                            <input type="date" id="taskDueDate" required>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" id="saveButton">
+                            Add Task
+                        </button>
+
+                        <button
+                            type="button"
+                            id="cancelButton"
+                            class="secondary-btn"
+                            hidden
+                        >
+                            Cancel Edit
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="tasks" class="task-section">
+                <div class="section-heading">
+                    <h2>My Tasks</h2>
+                    <span id="taskCount">0 tasks</span>
+                </div>
+
+                <div class="filters">
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search tasks..."
+                    >
+
+                    <select id="statusFilter">
+                        <option value="All">All Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+
+                    <select id="priorityFilter">
+                        <option value="All">All Priorities</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+
+                    <select id="sortSelect">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="dueDate">Due Date</option>
+                        <option value="priority">Priority</option>
+                    </select>
+                </div>
+
+                <div id="taskList" class="task-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
